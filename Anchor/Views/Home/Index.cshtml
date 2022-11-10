@@ -5,6 +5,8 @@
 <div>場外你好。</div>
 <div>
     <input type="button" id="giveMeStarburst" class="btn btn-primary" value="新增一個按鈕"/>
+    <br/>
+    <span id="C8763Count" style="color:powderblue"></span>
 </div>
 <div id="contain"></div>
 
@@ -15,6 +17,18 @@
             $("#giveMeStarburst").on("click", function(){
                 // 星爆氣流斬GIF
                 $("#contain").append('<img src="https://media.tenor.com/4Wmrjus9r0MAAAAC/%E6%98%9F%E7%88%86%E6%B0%A3%E6%B5%81%E6%96%AC.gif"/>');
+
+                let interval = setInterval(() => {
+                    let c8763Count = parseInt($("#C8763Count").text());
+                    if(isNaN(c8763Count))
+                        c8763Count = 0;
+                    $("#C8763Count").text(++c8763Count);
+                }, 50);
+
+                setTimeout(() => {
+                    $("#contain img").first().remove()
+                    clearInterval(interval);
+                }, 800);
             });
         })
     </script>
